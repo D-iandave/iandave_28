@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fresh Fields Poultry | Farm-Fresh Chicken & Eggs</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --wheat: #f5e6d3;
+            --barn-red: #8b3a2b;
+            --forest: #2d5016;
+            --cream: #faf7f2;
+            --soil: #5c4033;
+            --golden: #c4a35a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: cyan;
+            color: green;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Crimson Pro', serif;
+        }
+
+    
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(250, 247, 242, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(92, 64, 51, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+
+        .nav-container {
+            max-width: 1500px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Crimson Pro', serif;
+            font-size: 3rem;
+            font-weight: 600;
+            color: var(--barn-red);
+        }
+
+        .logo span {
+            color: var(--forest);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--soil);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--barn-red);
+        }
+
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, var(--wheat) 0%, var(--cream) 50%, rgba(196, 163, 90, 0.2) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 6rem 2rem 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(196, 163, 90, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 80% 20%, rgba(45, 80, 22, 0.08) 0%, transparent 40%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            max-width: 700px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            color: var(--forest);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .hero h1 span {
+            color: var(--barn-red);
+            font-style: italic;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--soil);
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: var(--barn-red);
+            color: white;
+            border: 2px solid var(--barn-red);
+        }
+
+        .btn-primary:hover {
+            background: transparent;
+            color: var(--barn-red);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--forest);
+            border: 2px solid var(--forest);
+        }
+
+        .btn-outline:hover {
+            background: var(--forest);
+            color: white;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .about {
+            padding: 6rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        @media (max-width: 768px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .about h2 {
+            font-size: 2.5rem;
+            color: var(--forest);
+            margin-bottom: 1.5rem;
+        }
+
+        .about p {
+            margin-bottom: 1rem;
+            color: var(--soil);
+        }
+
+        .about-image {
+            background: linear-gradient(145deg, var(--wheat), var(--golden));
+            height: 50px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 6rem;
+            color: var(--barn-red);
+            opacity: 0.9;
+        }
+
+        .products {
+            padding: 6rem 2rem;
+            background: linear-gradient(180deg, var(--cream) 0%, var(--wheat) 100%);
+        }
+
+        .products h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--forest);
+            margin-bottom: 1rem;
+        }
+
+        .products-subtitle {
+            text-align: center;
+            color: var(--soil);
+            margin-bottom: 3rem;
+        }
+
+        .products-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(92, 64, 51, 0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(92, 64, 51, 0.12);
+        }
+
+        .product-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        .product-card h3 {
+            font-size: 1.5rem;
+            color: var(--forest);
+            margin-bottom: 0.5rem;
+        }
+
+        .product-card p {
+            color: var(--soil);
+            font-size: 0.95rem;
+        }
+
+        /* Values Section */
+        .values {
+            padding: 6rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .values h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--forest);
+            margin-bottom: 3rem;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+
+        @media (max-width: 900px) {
+            .values-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 500px) {
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .value-item {
+            text-align: center;
+            padding: 2rem 1rem;
+        }
+
+        .value-item .icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--barn-red);
+        }
+
+        .value-item h3 {
+            font-size: 1.2rem;
+            color: var(--forest);
+            margin-bottom: 0.5rem;
+        }
+
+        .value-item p {
+            font-size: 0.9rem;
+            color: var(--soil);
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 6rem 2rem;
+            background: var(--forest);
+            color: white;
+        }
+
+        .contact-wrapper {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .contact p {
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            padding: 1rem 1.5rem;
+            border: 2px solid rgba(255,255,255,0.3);
+            border-radius: 10px;
+            background: rgba(255,255,255,0.1);
+            color: white;
+            font-family: inherit;
+            font-size: 1rem;
+        }
+
+        .contact-form input::placeholder,
+        .contact-form textarea::placeholder {
+            color: rgba(255,255,255,0.7);
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: var(--golden);
+        }
+
+        .contact-form textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .btn-light {
+            background: var(--golden);
+            color: var(--forest);
+            border: 2px solid var(--golden);
+        }
+
+        .btn-light:hover {
+            background: transparent;
+            color: var(--golden);
+        }
+        
+        footer {
+            padding: 2rem;
+            text-align: center;
+            background: var(--soil);
+            color: var(--wheat);
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: var(--golden);
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <nav id="nav">
+        <div class="nav-container">
+            <a href="#" class="logo">KATUKA BACKYARD FARM</span></a>
+            <img src="Images/KATUTUWA.jpg" alt="chick" width="100" height="100" />
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#products">Products</a></li>
+                <li><a href="#values">Our Values</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Farm-Fresh <span>Chicken</span> & Eggs</h1>
+            <p>Raising healthy, happy poultry the natural way. Premium quality chicken and eggs from our family farm to your table.</p>
+            <div class="hero-buttons">
+                <a href="#products" class="btn btn-primary">Our Products</a>
+                <a href="#contact" class="btn btn-outline">Get in Touch</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="about" id="about">
+        <div class="about-grid">
+            <div>
+                <h2>Our Story</h2>
+                <p>Fresh Fields Poultry has been raising chickens with care and respect. We believe in sustainable farming practices that prioritize animal welfare and produce the finest quality poultry products.</p>
+                <p>Our chickens roam free on open pastures, fed a natural diet without hormones or antibiotics. The result? Tender, flavorful chicken and rich, golden yolked eggs that families trust.</p>
+            </div>
+            <div class="about-image">
+                <img src="Images/11.png" alt="chick" width="550" height="450" />
+            </div>
+
+        </div>
+    </section>
+
+    <section class="products" id="products">
+        <h2>Our Products</h2>
+        <p class="products-subtitle">Fresh from our farm, delivered to your door</p>
+        <div class="products-grid">
+            <div class="product-card">
+                <div class="product-icon">
+                    <img src="Images/Picture2.jpg" alt="chicken" width="220" height="220" />
+                </div>
+                <h3>Live Chicken</h3>
+                <p>Premium whole chickens, pasture-raised and humanely processed. Perfect for roasting, grilling, or your favorite recipe.</p>
+            </div>
+            <div class="product-card">
+                <div class="product-icon">
+                    <img src="Images/katuka.jpg" alt="chicken" width="220" height="220" />
+                </div>
+                <h3>Farm Fresh Brown Eggs</h3>
+                <p>Rich, golden-yolked eggs from happy hens. Available in various sizes. Free-range and nutrient-packed.</p>
+            </div>
+        
+            <div class="product-card">
+                <div class="product-icon">
+                    <img src="Images/chicks.jpg" alt="chicken" width="220" height="220" />
+                </div>
+                <h3>Live Chicks</h3>
+                <p>For farmers and homesteaders. Quality day-old chicks, various breeds. Start your own flock with confidence.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="values" id="values">
+        <h2>Why Choose Us</h2>
+        <div class="values-grid">
+            <div class="value-item">
+                <div class="icon">🌿</div>
+                <h3>Pasture Raised</h3>
+                <p>Our chickens enjoy open air and natural grazing</p>
+            </div>
+            <div class="value-item">
+                <div class="icon">❤️</div>
+                <h3>No Hormones</h3>
+                <p>100% hormone and antibiotic-free poultry</p>
+            </div>
+            <div class="value-item">
+                <div class="icon">🏠</div>
+                <h3>Local Farm</h3>
+                <p>Family-owned, community-focused operation</p>
+            </div>
+            <div class="value-item">
+                <div class="icon">✨</div>
+                <h3>Premium Quality</h3>
+                <p>Consistently superior taste and freshness</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <div class="contact-wrapper">
+            <h2>Get In Touch</h2>
+            <p>Ready to experience the difference of farm-fresh poultry? Reach out for orders, farm visits, or wholesale inquiries.</p>
+            <form class="contact-form">
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Email Address" required>
+                <input type="tel" placeholder="Phone Number">
+                <textarea placeholder="Your Message"></textarea>
+                <button type="submit" class="btn btn-light">Send Message</button>
+
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2026 Fresh Fields Poultry. All rights reserved. | <a href="#">Privacy Policy</a></p>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        const nav = document.getElementById('nav');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+
+        // Form submission
+        document.querySelector('.contact-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Thank you for your message! We\'ll get back to you soon.');
+        });
+    </script>
+</body>
+</html>

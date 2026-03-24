@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APPS-TO -DO</title>
+    <rel="stylesheet" type="text/css">
+
+<STYLE>
+
+body { 
+	background-image: url(images/1.jpg);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 40px;
+	}
+	
+.container {
+	background: clear;
+	background-position: center;
+    width:500px;
+    padding: 50px;
+    border-radius:100px;
+    box-shadow:0 25px 50px rgba(5,5,5,5);
+
+}
+
+.todo-list { 
+	border-radius: 50%;
+	}
+
+button { 
+	padding:10px 15px;
+	border: none;
+	border-radius:8px;
+	cursor: pointer;
+	background: lightblue;
+	color: black;
+	transition: 0.3s;
+	}
+	
+.filters{
+	display:flex;
+	gap:10px;
+	margin-bottom:15px;
+	}
+	
+button:hover{
+	transform:scale(1.05);
+	}
+	
+.h1 {
+  width:25px;
+  padding: 15px;
+  }
+  
+ .tasklist { 
+  list-style:none;
+  padding:0;
+  }
+  
+.footer{
+	display:flex;
+	justify-content:space-between;
+	margin-top:15px;
+	font-size:14px;
+	}
+  
+</style>
+</head>
+
+<body>
+
+	 <div class="container">
+        <h1>Apps-To-do</h1>
+
+        <div class="input-group">
+            <input type="text" id="taskInput" placeholder="New task">
+            <button class="add-btn" onclick="addTask()">Add</button>
+
+        <ul id="taskList"></ul>
+		
+        <div class="filters">
+            <button onclick="setFilter('all')" id="allBtn" class="active">All</button>
+            <button onclick="setFilter('active')" id="activeBtn">Active</button>
+            <button onclick="setFilter('completed')" id="completedBtn">Completed</button>
+        </div>
+		    
+      <div class="todo-list">
+  <input type="checkbox"> Design homepage lay out </br>
+  <input type="checkbox"> Set up Project repository </br>
+  <input type="checkbox"> Implement dark mode </br>
+  <input type="checkbox"> Add filter functionality </br>
+  <input type="checkbox"> Write user guide </div></br>
+	</div>
+
+	<div class="footer">
+	<span id="taskCount">Remaining</span>
+	<button onclick="clearCompleted()">Clear Completed</button>
+		</div>
+
+    </div>
+
+</body>
+</html>
+
+
+

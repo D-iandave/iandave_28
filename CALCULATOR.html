@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>CALCULATOR</title>
+</head>
+
+<body>
+	<input type="text" id="n1" placeholder="Enter number 1">
+	<br/>
+	<br/>
+	<input type="text" id="n2" placeholder="Enter number 2">
+	<br/>
+	<br/>
+	
+	<input type="radio" name="operation" id="add" value="add">
+	<label for="add">Add</label>
+	<br/>
+	<input type="radio" name="operation" id="sub" value="sub">
+	<label for="sub">Subtract</label>
+	<br/>
+	<input type="radio" name="operation" id="mul" value="mul">
+	<label for="mul">Multiply</label>
+	<br/>
+	<input type="radio" name="operation" id="div" value="div">
+	<label for="div">Divide</label>
+	<br/>
+	<br/>
+	
+	<button id="calculate">Calculate</button>
+	<br/>
+	<br/>
+	<input type="text" id="sum" placeholder="Result">
+	<br/>
+	
+<script>
+	const calculateButton = document.getElementById("calculate");
+	const n1 = document.getElementById("n1");
+	const n2 = document.getElementById("n2");
+	const n3 = document.getElementById("sum");
+	const calculateHandler = () => { 
+		const selectedOperation = document.getElementsByIdName("operation");
+		let operation;
+		for (let i = 0; i < selectedOperation.length; i++) { 
+		if (selectedOperation[i].checked) { 
+		operation = selectedOperation[i].value;
+		break;
+		}
+		}
+	if (operation) { 	
+		if (operation === "add" { 
+		n3.value = Number(n1.value) + Number(n2.value);
+		} else if (operation === "sub") { 
+		n3.value = Number(n1.value) - Number(n2.value);
+		} else if (operation === "mul") { 
+		n3.value = Number(n1.value) * Number(n2.value);
+		} else if (operation ==="div") { 
+		n3.value = Number(n1.value) / Number(n2.value);
+		} 
+		}
+		else { 
+		alert(Please select an operation.");
+		}
+		};
+		
+		calculateButton.addEventListener("click", calculateHandler);
+		</script>
+		</body>
+		</html>
+		
